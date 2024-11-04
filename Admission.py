@@ -41,6 +41,9 @@ with st.sidebar.form("user_inputs_form"):
     lor = st.slider('Letter of Recommendation (LOR)', min_value=1.0, max_value=5.0, value=3.5, step=0.5)
     submit_button = st.form_submit_button("Predict")
 
+password_guess = st.text_input("What is the Password?")
+if password_guess != st.secrets["password"]: 
+    st.stop()
 
 # Encode the inputs for model prediction
 encode_df = default_df.copy()
@@ -97,7 +100,4 @@ with tab4:
     st.image('coverage.svg')
     st.caption("Range of predictions with confidence intervals.")
 
-password_guess = st.text_input("What is the Password?")
-if password_guess != st.secrets["password"]: 
-    st.stop()
 
